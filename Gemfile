@@ -47,3 +47,10 @@ end
 gem 'therubyracer', platforms: :ruby
 gem "threads_pad", github: "ssnake/threads_pad", branch: 'develop'
 gem 'pg'
+gem 'haml-rails'
+gem 'bootstrap-sass'
+#gem 'roo-xls'
+#gem 'roo', '~> 2.0.0'
+
+#gem 'paperclip', '~> 4.2'
+#gem "jquery-fileupload-rails"
