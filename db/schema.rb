@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223131338) do
+ActiveRecord::Schema.define(version: 20160229132301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160223131338) do
   create_table "threads_pad_job_logs", force: :cascade do |t|
     t.integer  "job_reflection_id"
     t.integer  "level"
+    t.integer  "group_id"
     t.text     "msg"
     t.datetime "created_at",        null: false
   end
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160223131338) do
 
   create_table "threads_pad_jobs", force: :cascade do |t|
     t.boolean "terminated"
+    t.string  "thread_id"
     t.boolean "done"
     t.string  "result"
     t.integer "group_id"

@@ -40,12 +40,21 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'rb-readline' # fixing LoadError: cannot load such file -- rb-readline
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
 end
 gem 'therubyracer', platforms: :ruby
-gem "threads_pad", github: "ssnake/threads_pad", branch: 'develop'
+
+
+# if Rails.env.production?
+# 	gem "threads_pad", github: "ssnake/threads_pad"
+# else
+	gem 'threads_pad', path: '../threads_pad'
+# end
+
+
 gem 'pg'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.6'

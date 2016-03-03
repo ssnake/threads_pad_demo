@@ -1,6 +1,35 @@
 %center
 	%h1 Thread Pad Demo
+.col-md-offset-2
+	%h2 Spreadsheets Parsing  Example
+	%p Here is ods file which should be parsed. It has many tabs. Each tabs is 
 
-%h2 Spreadsheets Parsing  Example
-Here is ods file which should be parsed. It has many tabs. Each tabs is 
-=# console
+	
+
+	%h2 
+	=form_tag main_start_path, method: :get, remote: true do 
+		=button_tag 'start', class: 'btn btn-default start'
+		.checkbox
+			=label_tag do
+				=check_box_tag 'threads[]', 1, true, id: 'threads_1'
+				1
+			=label_tag do
+				=check_box_tag 'threads[]', 2, false, id: 'threads_2'
+				2
+			=label_tag do
+				=check_box_tag 'threads[]', 3, false, id: 'threads_3'
+				3
+			=label_tag do
+				=check_box_tag 'threads[]', 4, false, id: 'threads_4'
+				4
+			=label_tag do
+				=check_box_tag 'threads[]', 5, false, id: 'threads_5'
+				5
+
+
+		
+	
+	.row
+	#precents
+	Logs
+	#logs
