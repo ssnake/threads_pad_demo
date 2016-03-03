@@ -30,6 +30,15 @@
 		
 	
 	.row
-	#precents
+	Percents:
+	%span#percents=@pad.current
+	='%'
+	%br
 	Logs
 	#logs
+		-@pad.logs.each do |l|
+			=format_log l
+-if !@pad.done?	
+	:javascript
+		enable_buttons(false)
+		start_import_timer()

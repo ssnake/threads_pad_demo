@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   include ThreadsPad::Helper
   protect_from_forgery with: :exception
-  before_action :get_pad, except: [:index]
+  before_action :get_pad
   def start
   	@cancel = false
   	#cancel
