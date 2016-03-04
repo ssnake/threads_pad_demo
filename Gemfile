@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.3', :engine => 'jruby', :engine_version => '9.0.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -49,9 +49,9 @@ gem 'therubyracer', platforms: :ruby
 
 
 # if Rails.env.production?
-# 	gem "threads_pad", github: "ssnake/threads_pad"
+	gem "threads_pad", github: "ssnake/threads_pad"
 # else
-	gem 'threads_pad', path: '../threads_pad'
+	# gem 'threads_pad', path: '../threads_pad'
 # end
 
 
