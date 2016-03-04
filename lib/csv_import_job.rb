@@ -10,8 +10,8 @@ class CsvImportJob < ThreadsPad::Job
 		current_row = @start_row
 		self.max = @count
 		while current_row < @start_row + @count do
-			h = sheet.row(current_row)
-			parse h
+			row = sheet.row(current_row)
+			parse row.first.split ';'
 			break if terminated?
 			current_row += 1
 			self.current +=1
@@ -19,7 +19,7 @@ class CsvImportJob < ThreadsPad::Job
 		
 
 	end
-	def parse hash
-		 puts hash.inspect
+	def parse arg
+		 Unit.create serial: arg[0], model_type: arg[1], ship_id: arg[2], customer_no: arg[3], ship_date: arg[4], order_no: arg[5]
 	end
 end

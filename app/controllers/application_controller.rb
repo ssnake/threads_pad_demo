@@ -31,8 +31,7 @@ private
       chunk_length = sheet.count / threads.count
       mod = sheet.count % threads.count
       
-      CsvImportJob.new(fn, 1 , chunk_length + mod).work
-      return
+      
 
       threads.count.times do |index|  
         if index == 0
@@ -41,8 +40,10 @@ private
           @pad << CsvImportJob.new(fn, index * chunk_length + mod + 1, chunk_length) 
         end
       end
-      return 
+      
       session[:pad_id] =  @pad.start
+      Unit.delete_all
+      session[:started_at] = Time.now
       @pad.log "Started at #{Time.now}"
   end
 end

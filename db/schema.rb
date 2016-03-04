@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229132301) do
+ActiveRecord::Schema.define(version: 20160304143154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,5 +41,22 @@ ActiveRecord::Schema.define(version: 20160229132301) do
   end
 
   add_index "threads_pad_jobs", ["group_id"], name: "index_threads_pad_jobs_on_group_id", using: :btree
+
+  create_table "units", force: :cascade do |t|
+    t.string   "units"
+    t.string   "serial"
+    t.string   "model_type"
+    t.integer  "ship_id"
+    t.datetime "ship_date"
+    t.string   "customer_no"
+    t.string   "order_no"
+  end
+
+  add_index "units", ["customer_no"], name: "index_units_on_customer_no", using: :btree
+  add_index "units", ["model_type"], name: "index_units_on_model_type", using: :btree
+  add_index "units", ["order_no"], name: "index_units_on_order_no", using: :btree
+  add_index "units", ["serial"], name: "index_units_on_serial", using: :btree
+  add_index "units", ["ship_date"], name: "index_units_on_ship_date", using: :btree
+  add_index "units", ["ship_id"], name: "index_units_on_ship_id", using: :btree
 
 end
