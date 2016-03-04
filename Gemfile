@@ -60,7 +60,7 @@ gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 #gem 'roo-xls'
-#gem 'roo', '~> 2.0.0'
+gem 'roo', '~> 2.0.0'
 
 #gem 'paperclip', '~> 4.2'
 #gem "jquery-fileupload-rails"
