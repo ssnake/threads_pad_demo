@@ -8,7 +8,7 @@
 	
 	=form_tag main_start_path, method: :get, remote: true do 
 		
-		%h2 Amount of parsing threads
+		%h2 Amount of parsing threads. 
 		%ul.checkbox
 			%li
 				=label_tag do
@@ -47,6 +47,7 @@
 		='%'
 	%br
 	%h2 Logs
+	You can refresh the page, but logs won't disappear
 	#logs
 		-@pad.logs.each do |l|
 			=format_log l
