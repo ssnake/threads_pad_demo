@@ -4,7 +4,7 @@
 <%else%>
 	console.log 'start is clicked'
 	$('#logs').empty()
-	$('#percents').empty()
+	$('#percents').html('0')
 	enable_buttons false
 	start_import_timer()
 <%end%>

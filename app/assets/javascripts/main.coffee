@@ -11,6 +11,7 @@
 	    		xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
 		})
 @start_import_timer = () ->
+	stop_import_timer()
 	@import_timer = setInterval(
 		() -> 
 			if window.location.pathname == '/'
@@ -19,11 +20,11 @@
 			else
 				stop_import_timer()
 	, 3000)
-	console.log 'start_import_timer'
+	console.log "start_import_timer #{@import_timer}"
 
 @stop_import_timer = () -> 
 	clearInterval(@import_timer)
-	console.log 'stop_import_timer'
+	console.log "stop_import_timer #{@import_timer}"
 
 $(document).on 'click', '.start', (e) ->
 	#console.log 'start clicked'

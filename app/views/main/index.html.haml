@@ -1,40 +1,52 @@
 %center
-	%h1 Thread Pad Demo
+	%h1 CSV Parsing  Example
 .col-md-offset-2
-	%h2 Spreadsheets Parsing  Example
-	%p Here is ods file which should be parsed. It has many tabs. Each tabs is 
+	%p="Here is a #{link_to('csv file', root_url + 'demo.csv')}. It contains 10000 lines. With ThreadsPad gem we can split a parsing process into a few chunks and run them at same time.".html_safe
 
 	
 
-	%h2 
+	
 	=form_tag main_start_path, method: :get, remote: true do 
-		=button_tag 'start', class: 'btn btn-default start'
-		.checkbox
-			=label_tag do
-				=check_box_tag 'threads[]', 1, true, id: 'threads_1'
-				1
-			=label_tag do
-				=check_box_tag 'threads[]', 2, false, id: 'threads_2'
-				2
-			=label_tag do
-				=check_box_tag 'threads[]', 3, false, id: 'threads_3'
-				3
-			=label_tag do
-				=check_box_tag 'threads[]', 4, false, id: 'threads_4'
-				4
-			=label_tag do
-				=check_box_tag 'threads[]', 5, false, id: 'threads_5'
-				5
-
+		
+		%h2 Amount of parsing threads
+		%ul.checkbox
+			%li
+				=label_tag do
+					=check_box_tag 'threads[]', 1, true, id: 'threads_1'
+					1 Parsing Job
+			%li
+				=label_tag do
+					=check_box_tag 'threads[]', 2, false, id: 'threads_2'
+					2 Parsing Job
+			%li
+				=label_tag do
+					=check_box_tag 'threads[]', 3, false, id: 'threads_3'
+					3 Parsing Job
+			%li
+				=label_tag do
+					=check_box_tag 'threads[]', 4, false, id: 'threads_4'
+					4 Parsnig Job
+			%li
+				=label_tag do
+					=check_box_tag 'threads[]', 5, false, id: 'threads_5'
+					5 Parsing Job
+		The parsing job consist of following processes:
+		%ul
+			%li reading a csv file
+			%li parsing a line
+			%li saving mined data into DB
+		%h2 Let's try it
+		=button_tag 'Start', class: 'btn btn-lg btn-default start'
 
 		
 	
 	.row
-	Percents:
-	%span#percents=@pad.current
-	='%'
+	%center
+	%h2
+		%span#percents=@pad.current || 0
+		='%'
 	%br
-	Logs
+	%h2 Logs
 	#logs
 		-@pad.logs.each do |l|
 			=format_log l
