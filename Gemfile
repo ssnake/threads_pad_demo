@@ -64,3 +64,4 @@ gem 'roo', '~> 2.0.0'
 
 #gem 'paperclip', '~> 4.2'
 #gem "jquery-fileupload-rails"
+gem "chartkick"
