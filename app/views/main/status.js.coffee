@@ -4,8 +4,10 @@
 	$('#logs').append("<%= format_log(l)%>")
 <%end%>
 
-<% #byebug %>
+	
+
 <% if @pad.done? %>
 	stop_import_timer()
 	enable_buttons()
+	$('#graph').html("<%= escape_javascript(render partial: 'graph')%>")
 <%end%>
