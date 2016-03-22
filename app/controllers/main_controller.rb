@@ -20,7 +20,7 @@ class MainController < ApplicationController
   end
   
   def index
-  	@stats = Stat.last(15)
+  	
   end
 
   def status

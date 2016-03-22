@@ -1,0 +1,19 @@
+%h2 Stats're based on successfully finished jobs
+= column_chart Stat.where('percents >= 100').group(:threads_count).average(:time_delta),  xtitle: "Threads", ytitle: "Avg Delta, s"
+%h2 Last 15 records
+%table.table
+	%thead
+		%th Start
+		%th Finish
+		%th Delta, sec
+		%th Percents
+		%th Threads Count
+
+	%tbody
+		- Stat.last(15).each do |stat|
+			%tr
+				%td=stat.start
+				%td=stat.finish
+				%td=stat.time_delta
+				%td=stat.percents
+				%td=stat.threads_count
