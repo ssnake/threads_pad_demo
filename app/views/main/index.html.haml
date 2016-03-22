@@ -1,6 +1,6 @@
 %center
 	%h1 CSV Parsing  Example
-.col-md-offset-2
+.col-md-offset-2.col-md-4
 	%p="Here is a #{link_to('csv file', root_url + 'demo.csv')}. It contains 10000 lines. With ThreadsPad gem we can split a parsing process into a few chunks and run them at same time.".html_safe
 
 	
@@ -51,6 +51,23 @@
 	#logs
 		-@pad.logs.each do |l|
 			=format_log l
+.col-md-6
+	%table.table
+		%thead
+			%th Start
+			%th Finish
+			%th Delta, sec
+			%th Percents
+			%th Threads Count
+
+		%tbody
+			-@stats.each do |stat|
+				%tr
+					%td=stat.start
+					%td=stat.finish
+					%td=stat.time_delta
+					%td=stat.percents
+					%td=stat.threads_count
 -if !@pad.done?	
 	:javascript
 		enable_buttons(false)

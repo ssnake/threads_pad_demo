@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304143154) do
+ActiveRecord::Schema.define(version: 20160322110617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "stats", force: :cascade do |t|
+    t.float    "percents"
+    t.integer  "threads_count"
+    t.datetime "start"
+    t.datetime "finish"
+    t.integer  "time_delta"
+  end
+
+  add_index "stats", ["finish"], name: "index_stats_on_finish", using: :btree
+  add_index "stats", ["percents"], name: "index_stats_on_percents", using: :btree
+  add_index "stats", ["start"], name: "index_stats_on_start", using: :btree
+  add_index "stats", ["threads_count"], name: "index_stats_on_threads_count", using: :btree
+  add_index "stats", ["time_delta"], name: "index_stats_on_time_delta", using: :btree
 
   create_table "threads_pad_job_logs", force: :cascade do |t|
     t.integer  "job_reflection_id"

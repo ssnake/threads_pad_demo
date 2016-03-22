@@ -1,9 +1,5 @@
 	$('#percents').html("<%= @pad.current%>")
-<% if @pad.done? %>
-<% @pad.log "Done at #{Time.now}"%>
-<% @pad.log "Amount of units is #{Unit.count}"%>
-<% @pad.log "Time delta #{(Time.now - Time.parse(session[:started_at])).round(2)} s" if session[:started_at].present? %>
-<% end %>
+
 <% filter_job_logs(@pad.logs).each do |l|%>
 	$('#logs').append("<%= format_log(l)%>")
 <%end%>
