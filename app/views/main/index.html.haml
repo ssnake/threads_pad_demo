@@ -52,6 +52,7 @@
 		-@pad.logs.each do |l|
 			=format_log l
 .col-md-6
+	= column_chart Stat.where('percents >= 100').group(:threads_count).average(:time_delta),  xtitle: "Threads", ytitle: "Delta, s"
 	%table.table
 		%thead
 			%th Start
