@@ -1,8 +1,7 @@
-GIT
-  remote: git://github.com/ssnake/threads_pad.git
-  revision: 5879a984fe46ebcf9a264475b369d1c3050080b3
+PATH
+  remote: ../threads_pad
   specs:
-    threads_pad (0.1.7)
+    threads_pad (0.2.0)
       rails (~> 4.2.1)
 
 GEM

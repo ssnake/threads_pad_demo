@@ -24,14 +24,7 @@ class MainController < ApplicationController
   end
 
   def status
-    if @pad.done?
-    	@pad.log "Done at #{Time.now}"
-      @pad.log "Amount of units is #{Unit.count}"
-      finish_date =  Time.now
-      delta = (finish_date - Time.parse(session[:started_at])).round(2)
-      @pad.log "Time delta #{delta} s" if session[:started_at].present? 
-      Stat.create! percents: @pad.current, threads_count: session[:threads_count], start: Time.parse(session[:started_at]), finish: finish_date, time_delta: delta
-    end
+  
 
   end
 
@@ -54,10 +47,26 @@ private
         end
       end
       
-      session[:pad_id] =  @pad.start
       Unit.delete_all
       session[:started_at] = Time.now
       session[:threads_count] = threads.count
+
+      #add events
+      @pad.on 100 do |j|
+        j.debug "Done at #{Time.now}"
+        j.debug "Amount of units is #{Unit.count}"
+        finish_date =  Time.now
+        delta = (finish_date - Time.parse(session[:started_at])).round(2)
+        j.debug "Time delta #{delta} s" if session[:started_at].present? 
+        Stat.create! percents: @pad.current, threads_count: session[:threads_count], start: Time.parse(session[:started_at]), finish: finish_date, time_delta: delta
+      end
+      @pad.on(5..10) { |j| j.debug 'everything seems ok'}
+      @pad.on(50..60) { |j| j.debug 'it reached half of work'}
+      @pad.on(90..95) { |j| j.debug 'it\'s almost done'}
+
+      
+      session[:pad_id] =  @pad.start
+      
       @pad.log "Started at #{Time.now}"
   end
 

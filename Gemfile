@@ -49,9 +49,9 @@ gem 'therubyracer', platforms: :ruby
 
 
 # if Rails.env.production?
-	gem "threads_pad", github: "ssnake/threads_pad"
+	#gem "threads_pad"
 # else
-	# gem 'threads_pad', path: '../threads_pad'
+	gem 'threads_pad', path: '../threads_pad'
 # end
 
 
