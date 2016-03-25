@@ -52,7 +52,7 @@ private
       session[:threads_count] = threads.count
 
       #add events
-      @pad.on 100 do |j|
+      @pad.on :finish do |j|
         j.debug "Done at #{Time.now}"
         j.debug "Amount of units is #{Unit.count}"
         finish_date =  Time.now
